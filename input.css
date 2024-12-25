@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  @apply hidden;
+}
+
+body {
+  @apply overflow-x-hidden;
+}
+
+li {
+  @apply text-lg font-medium  cursor-pointer duration-300 hover:translate-x-2  hover:text-[#7448E2];
+}
+
+.glass {
+  @apply bg-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-sm border border-white/20 rounded-bl-lg rounded-br-lg lg:bg-none lg:shadow-none lg:backdrop-blur-none lg:border-0 lg:rounded-none;
+}
+body {
+  background: #111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.card::before {
+  content: "";
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(152, 131, 208, 0.75) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 300px;
+  width: 200px;
+  position: absolute;
+  animation: rotate 10s linear infinite;
+  z-index: 0;
+  top: 50%;
+  transform: translate(0);
+  transform-origin: top center;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100%));
+  }
+}
+
+@keyframes animatetoleft {
+  0% {
+    transform: translateX(calc(-50%));
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.child {
+  @apply cursor-pointer;
+}
+
+.scroll .parents {
+  animation: animatetoleft var(--t) linear infinite;
+}
+
+.scroll .parent {
+  animation: animate var(--t) linear infinite;
+}
+
+.scroll,
+.swiper {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.scroll .card:hover {
+  @apply cursor-pointer;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  @apply bg-[#AC92F2] w-2 h-2 mt-5;
+}
+
+.slide-light {
+  @apply w-full ml-10 h-20 transform -rotate-[6deg] absolute bottom-3 -left-20 right-0 bg-[#6a608c] blur-3xl -z-20 opacity-70;
+}
+
+@layer utilities {
+  .loader {
+    @apply w-[45px];
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(#ac92f2 0 0);
+    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: l6 1s infinite linear;
+  }
+  @keyframes l6 {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+}
