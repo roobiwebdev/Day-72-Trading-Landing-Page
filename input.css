@@ -107,14 +107,14 @@ body {
 
 @layer utilities {
   .loader {
-    @apply w-[45px];
-    aspect-ratio: 0.75;
-    --c: no-repeat linear-gradient(#ac92f2 0 0);
-    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
-    background-size: 20% 50%;
-    animation: l6 1s infinite linear;
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #ac92f2 90%, #ffffff00);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 50%;
+    animation: l3 1s infinite linear;
   }
-  @keyframes l6 {
+  @keyframes l3 {
     20% {
       background-position: 0% 0%, 50% 50%, 100% 50%;
     }
